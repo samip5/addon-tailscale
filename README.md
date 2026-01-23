@@ -53,7 +53,7 @@ our [GitHub Repository][repository].
 
 MIT License
 
-Copyright (c) 2025-2026 Skyler Mäntysaari  
+Copyright (c) 2026 Skyler Mäntysaari  
 Copyright (c) 2021-2025 Franck Nijhof
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
