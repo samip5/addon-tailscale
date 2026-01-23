@@ -7,16 +7,10 @@
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
 
-[![Github Actions][github-actions-shield]][github-actions]
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
 
 [![Discord][discord-shield]][discord]
-[![Community Forum][forum-shield]][forum]
-
-[![Sponsor Frenck via GitHub Sponsors][github-sponsors-shield]][github-sponsors]
-
-[![Support Frenck on Patreon][patreon-shield]][patreon]
 
 Zero config VPN for building secure networks.
 
@@ -30,21 +24,6 @@ Even when separated by firewalls or subnets, Tailscale just works. Tailscale
 manages firewall rules for you, and works from anywhere you are.
 
 [:books: Read the full add-on documentation][docs]
-
-## Support
-
-Got questions?
-
-You have several options to get them answered:
-
-- The [Home Assistant Community Add-ons Discord chat server][discord] for add-on
-  support and feature requests.
-- The [Home Assistant Discord chat server][discord-ha] for general Home
-  Assistant discussions and questions.
-- The Home Assistant [Community Forum][forum].
-- Join the [Reddit subreddit][reddit] in [/r/homeassistant][reddit]
-
-You could also [open an issue here][issue] GitHub.
 
 ## Contributing
 
@@ -96,27 +75,20 @@ SOFTWARE.
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[commits-shield]: https://img.shields.io/github/commit-activity/y/hassio-addons/addon-tailscale.svg
-[commits]: https://github.com/hassio-addons/addon-tailscale/commits/main
-[contributors]: https://github.com/hassio-addons/addon-tailscale/graphs/contributors
+[commits-shield]: https://img.shields.io/github/commit-activity/y/samip5/addon-tailscale.svg
+[commits]: https://github.com/samip5/addon-tailscale/commits/main
+[contributors]: https://github.com/samip5/addon-tailscale/graphs/contributors
 [discord-ha]: https://discord.gg/c5DvZ4e
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 [discord]: https://discord.me/hassioaddons
-[docs]: https://github.com/hassio-addons/addon-tailscale/blob/main/tailscale/DOCS.md
-[forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
-[forum]: https://community.home-assistant.io/?u=frenck
-[frenck]: https://github.com/frenck
-[github-actions-shield]: https://github.com/hassio-addons/addon-tailscale/workflows/CI/badge.svg
-[github-actions]: https://github.com/hassio-addons/addon-tailscale/actions
-[github-sponsors-shield]: https://frenck.dev/wp-content/uploads/2019/12/github_sponsor.png
-[github-sponsors]: https://github.com/sponsors/frenck
-[issue]: https://github.com/hassio-addons/addon-tailscale/issues
-[license-shield]: https://img.shields.io/github/license/hassio-addons/addon-tailscale.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
-[patreon-shield]: https://frenck.dev/wp-content/uploads/2019/12/patreon.png
-[patreon]: https://www.patreon.com/frenck
+[docs]: https://github.com/samip5/addon-tailscale/blob/main/tailscale/DOCS.md
+[github-actions-shield]: https://github.com/samip5s/addon-tailscale/workflows/CI/badge.svg
+[github-actions]: https://github.com/samip5/addon-tailscale/actions
+[issue]: https://github.com/samip5/addon-tailscale/issues
+[license-shield]: https://img.shields.io/github/license/samip5/addon-tailscale.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
 [reddit]: https://reddit.com/r/homeassistant
-[releases-shield]: https://img.shields.io/github/release/hassio-addons/addon-tailscale.svg
-[releases]: https://github.com/hassio-addons/addon-tailscale/releases
+[releases-shield]: https://img.shields.io/github/release/samip5/addon-tailscale.svg
+[releases]: https://github.comsamip5/addon-tailscale/releases
 [repository]: https://github.com/hassio-addons/repository
