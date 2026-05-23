@@ -6,6 +6,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - tailscale/Dockerfile
+      - tailscale/build.yaml
+      - tailscale/rootfs/**
   release:
     types:
       - published
