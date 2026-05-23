@@ -14,6 +14,11 @@ on:
     types:
       - published
   workflow_dispatch:
+    inputs:
+      version:
+        description: Version to build (e.g. 1.98.3). Leave empty for SHA-based edge build.
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -44,12 +49,16 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           TAG_NAME: ${{ github.event.release.tag_name }}
+          INPUT_VERSION: ${{ inputs.version }}
           SHA: ${{ github.sha }}
         run: |
           version="${SHA:0:7}"
           if [[ "${EVENT_NAME}" = "release" ]]; then
             version="${TAG_NAME}"
             version="${version,,}"
+            version="${version#v}"
+          elif [[ "${EVENT_NAME}" = "workflow_dispatch" && -n "${INPUT_VERSION}" ]]; then
+            version="${INPUT_VERSION}"
             version="${version#v}"
           fi
           echo "version=${version}" >> "$GITHUB_OUTPUT"
