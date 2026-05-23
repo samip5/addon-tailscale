@@ -10,10 +10,10 @@ on:
       - tailscale/Dockerfile
       - tailscale/build.yaml
       - tailscale/rootfs/**
-  workflow_dispatch:
   release:
     types:
       - published
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -30,7 +30,7 @@ jobs:
       name: ${{ steps.information.outputs.name }}
       slug: ${{ steps.information.outputs.slug }}
       target: ${{ steps.information.outputs.target }}
-      version: ${{ steps.release.outputs.version }}
+      version: ${{ steps.version.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -39,8 +39,8 @@ jobs:
       - name: Run app information action
         id: information
         uses: frenck/action-addon-information@ce1377e9851cf569c29329e65fb2c57e67ca0f69 # v1.4.2
-      - name: Gather version
-        id: release
+      - name: Determine version
+        id: version
         env:
           EVENT_NAME: ${{ github.event_name }}
           TAG_NAME: ${{ github.event.release.tag_name }}
@@ -59,6 +59,7 @@ jobs:
     needs: information
     runs-on: ${{ matrix.architecture == 'aarch64' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
     strategy:
+      fail-fast: false
       matrix:
         architecture: ${{ fromJson(needs.information.outputs.architectures) }}
     steps:
