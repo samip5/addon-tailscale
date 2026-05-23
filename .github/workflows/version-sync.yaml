@@ -9,6 +9,7 @@ on:
     paths:
       - tailscale/Dockerfile
       - tailscale/build.yaml
+  workflow_dispatch:
 
 permissions:
   contents: write
