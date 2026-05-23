@@ -10,16 +10,21 @@ ARG BUILD_ARCH=amd64
 ARG TAILSCALE_VERSION="v1.98.3"
 RUN \
     apk add --no-cache \
-        ethtool=6.14.1-r0 \
-        ipcalc=1.0.3-r0 \
-        iproute2=6.15.0-r0 \
+        bind-tools=9.20.23-r0 \
+        dnsmasq=2.91-r1 \
+        ethtool=6.15-r0 \
+        ipcalc=1.0.3-r1 \
+        iproute2=6.17.0-r0 \
         iptables=1.8.11-r1 \
         nginx=1.28.3-r1 \
-        coreutils=9.7-r1 \
-        networkmanager=1.52.1-r0 \
+        coreutils=9.8-r1 \
+        networkmanager=1.54.3-r0 \
     \
     && ln -sf /sbin/xtables-nft-multi /sbin/ip6tables \
     && ln -sf /sbin/xtables-nft-multi /sbin/iptables \
+    \
+    && rm -f -r \
+        /usr/lib/NetworkManager/dispatcher.d \
     \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
     && if [ "${BUILD_ARCH}" = "amd64" ]; then ARCH="amd64"; fi \
@@ -56,13 +61,13 @@ LABEL \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="Franck Nijhof <frenck@addons.community>" \
+    maintainer="Franck Nijhof <opensource@frenck.dev>" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="Home Assistant Community Add-ons" \
-    org.opencontainers.image.authors="Franck Nijhof <frenck@addons.community>" \
+    org.opencontainers.image.vendor="Home Assistant Community Apps" \
+    org.opencontainers.image.authors="Franck Nijhof <opensource@frenck.dev>" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.url="https://addons.community" \
+    org.opencontainers.image.url="https://frenck.dev/home-assistant-apps" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \
