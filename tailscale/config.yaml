@@ -4,7 +4,7 @@ version: dev
 slug: tailscale
 description: Zero config VPN for building secure networks
 url: https://github.com/samip5/addon-tailscale
-image: ghcr.io/samip5/addon-tailscale/{arch}
+image: ghcr.io/samip5/tailscale/{arch}
 ingress: true
 ingress_port: 0
 ingress_stream: true
