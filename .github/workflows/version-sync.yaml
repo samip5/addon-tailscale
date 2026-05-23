@@ -8,25 +8,50 @@ on:
       - main
     paths:
       - tailscale/Dockerfile
+      - tailscale/build.yaml
 
 permissions:
   contents: write
 
 jobs:
   sync:
-    name: Sync addon version with Tailscale
+    name: Compute version and release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
-      - name: Extract Tailscale version
+      - name: Compute new version
         id: version
         run: |
-          ver=$(grep -oP 'ARG TAILSCALE_VERSION="\K[^"]+' tailscale/Dockerfile | sed 's/^v//')
-          echo "version=${ver}" >> "$GITHUB_OUTPUT"
+          # Current Tailscale version in Dockerfile
+          ts_ver=$(grep -oP 'ARG TAILSCALE_VERSION="\K[^"]+' tailscale/Dockerfile | sed 's/^v//')
+
+          # Latest semver-style tag (ignore non-version tags like upstream v0.x.x)
+          latest_tag=$(git tag --sort=-v:refname | grep -E '^[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+
+          if [[ -z "${latest_tag}" ]]; then
+            new_version="${ts_ver}"
+          else
+            tag_base="${latest_tag%%-*}"
+            if [[ "${tag_base}" == "${ts_ver}" ]]; then
+              # Same Tailscale version — increment addon revision
+              if [[ "${latest_tag}" == *"-"* ]]; then
+                rev="${latest_tag##*-}"
+                new_version="${ts_ver}-$((rev + 1))"
+              else
+                new_version="${ts_ver}-1"
+              fi
+            else
+              # New Tailscale version — fresh base, no revision suffix
+              new_version="${ts_ver}"
+            fi
+          fi
+
+          echo "version=${new_version}" >> "$GITHUB_OUTPUT"
 
       - name: Check if tag already exists
         id: check
