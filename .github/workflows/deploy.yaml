@@ -10,6 +10,7 @@ on:
       - tailscale/Dockerfile
       - tailscale/build.yaml
       - tailscale/rootfs/**
+  workflow_dispatch:
   release:
     types:
       - published
